@@ -13,13 +13,63 @@ const style = {
 
 const LocationSelector = () => {
     const [inFocus, setInFocus] = useState('from');
-  return (
-    <div className={style.wrapper}>
+    const [pickup, setPickup] = useState('');
+    const [dropoff, setDropoff] = useState('');
+
+    return (
+      <section className={style.wrapper}>
         <div className={style.searchHeader}>
-            {inFocus === 'from' ? 'Where can we pick you up?' : 'Where to?'}
+          {inFocus === 'from' ? 'Where can we pick you up?' : 'Where to?'}
         </div>
-    </div>
-  )
+        <div className={style.inputBoxes}>
+          <div
+            className={`${style.inputBox} ${
+              inFocus === 'from' && style.focusedInputBox
+            }`}
+          >
+            <div className={style.svgContainer}>
+              <svg viewBox='0 0 24 24' width='1em' height='1em'>
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d='M12 14a2 2 0 100-4 2 2 0 000 4zm5-2a5 5 0 11-10 0 5 5 0 0110 0z'
+                />
+              </svg>
+            </div>
+            <input
+              className={style.input}
+              placeholder='Enter pickup location'
+              value={pickup}
+              onChange={e => setPickup(e.target.value)}
+              onFocus={() => setInFocus('from')}
+            />
+          </div>
+          <div className={style.verticalLine} />
+          <div
+            className={`${style.inputBox} ${
+              inFocus === 'to' && style.focusedInputBox
+            }`}
+          >
+            <div className={style.svgContainer}>
+              <svg viewBox='0 0 24 24' width='1em' height='1em'>
+                <path
+                  fillRule='evenodd'
+                  clipRule='evenodd'
+                  d='M14 10h-4v4h4v-4zM7 7v10h10V7H7z'
+                />
+              </svg>
+            </div>
+            <input
+              className={style.input}
+              placeholder='Where to?'
+              value={dropoff}
+              onChange={e => setDropoff(e.target.value)}
+              onFocus={() => setInFocus('to')}
+            />
+          </div>
+        </div>
+      </section>
+    )
 }
 
 export default LocationSelector;

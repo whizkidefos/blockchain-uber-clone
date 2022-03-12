@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Confirm from '../components/Confirm'
 import LocationSelector from '../components/LocationSelector'
 import Map from '../components/Map'
 import Navbar from '../components/Navbar'
@@ -27,6 +28,7 @@ export default function Home() {
           {/* Location selector */}
           <LocationSelector />
           {/* Confirm ride */}
+          <Confirm />
         </div>
       </div>
       
